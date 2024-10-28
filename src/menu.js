@@ -1,12 +1,10 @@
+import { createElement } from "./domUtils";
+
 function menuItem(name, desc) {
   const getName = () => name;
   const getDesc = () => desc;
 
   return { getName, getDesc };
-}
-
-function createElement(element) {
-  return document.createElement(element);
 }
 
 function menuPage() {
@@ -30,30 +28,23 @@ function menuPage() {
   ];
 
   const content = document.getElementById("content");
-  const h1 = createElement("h1");
-  const p = createElement("p");
-  const menuContainer = createElement("div");
-
-  h1.textContent = "Indulge in Authentic Italian Cuisine";
-  p.textContent = `Our menu is a curated selection of Italy's most beloved dishes, each
+  const h1 = createElement("h1", "", "Indulge in Authentic Italian Cuisine");
+  const p = createElement(
+    "p",
+    "menu-intro",
+    `Our menu is a curated selection of Italy's most beloved dishes, each
         crafted with passion and an eye for detail. From starters that tease the
         palate to desserts that leave a sweet mark on your heart, La Dolce Vita
         is a culinary journey that brings the authentic flavors of Italy to your
-        table.`;
-
-  p.className = "menu-intro";
-  menuContainer.className = "menu-container";
+        table.`
+  );
+  const menuContainer = createElement("div", "menu-container");
 
   menuItems.forEach((item) => {
-    const menuItem = createElement("div");
-    const img = createElement("div");
-    const name = createElement("h2");
-    const desc = createElement("p");
-
-    menuItem.className = "menu-item";
-    img.id = item.getName().toLowerCase();
-    name.textContent = item.getName();
-    desc.textContent = item.getDesc();
+    const menuItem = createElement("div", "menu-item");
+    const img = createElement("div", "", "", item.getName().toLowerCase());
+    const name = createElement("h2", "", item.getName());
+    const desc = createElement("p", "", item.getDesc());
 
     menuItem.appendChild(img);
     menuItem.appendChild(name);
