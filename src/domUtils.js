@@ -16,4 +16,8 @@ function createElement(elementType, className = "", textContent = "", id = "") {
   return element;
 }
 
-export { createElement };
+function appendChildren(parent, ...children) {
+  children.forEach((child) => parent.appendChild(child));
+}
+
+export { createElement, appendChildren };

@@ -1,4 +1,5 @@
-import { createElement } from "./domUtils";
+import { createElement, appendChildren } from "./domUtils";
+import { createMenuItem } from "./menuItem";
 
 function menuPage(menuData) {
   const content = document.getElementById("content");
@@ -15,21 +16,22 @@ function menuPage(menuData) {
   );
   const menuContainer = createElement("div", "menu-container");
 
-  menuData.forEach((item) => {
-    const menuItem = createElement("div", "menu-item");
-    const img = createElement("div", "", "", item.getName().toLowerCase());
-    const name = createElement("h2", "", item.getName());
-    const desc = createElement("p", "", item.getDesc());
-
-    menuItem.appendChild(img);
-    menuItem.appendChild(name);
-    menuItem.appendChild(desc);
+  menuData.forEach(({ name, desc }) => {
+    const menuItem = renderMenuItem(createMenuItem(name, desc));
     menuContainer.appendChild(menuItem);
   });
 
-  content.appendChild(title);
-  content.appendChild(introText);
-  content.appendChild(menuContainer);
+  appendChildren(content, title, introText, menuContainer);
+}
+
+function renderMenuItem(menuItem) {
+  const menuItemDiv = createElement("div", "menu-item");
+  const imgDiv = createElement("div", "", "", menuItem.getName().toLowerCase());
+  const nameHeading = createElement("h2", "", menuItem.getName());
+  const descParagraph = createElement("p", "", menuItem.getDesc());
+
+  appendChildren(menuItemDiv, imgDiv, nameHeading, descParagraph);
+  return menuItemDiv;
 }
 
 export { menuPage };
