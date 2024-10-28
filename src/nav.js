@@ -24,7 +24,7 @@ function renderContent(menuData) {
       setActiveTab(event.currentTarget);
 
       content.innerHTML = "";
-      pages[tab.dataset.tab];
+      pages[tab.dataset.tab]();
     });
   });
 
