@@ -17,6 +17,7 @@ function renderContent(menuData) {
     3: aboutPage,
   };
 
+  // Add click event listeners to change content on tab clicked
   const tabs = document.querySelectorAll("nav > button");
   tabs.forEach((tab) => {
     tab.addEventListener("click", (event) => {
@@ -26,6 +27,11 @@ function renderContent(menuData) {
       pages[tab.dataset.tab];
     });
   });
+
+  // Initialize the first page loaded (homepage)
+  const initalPage = document.querySelector("nav > button");
+  setActiveTab(initalPage);
+  homepage();
 }
 
 export { renderContent };
