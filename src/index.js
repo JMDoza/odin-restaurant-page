@@ -21,6 +21,6 @@ const menuData = [
   },
 ];
 
-// homepage();
+homepage();
 
-menuPage(menuData);
+// menuPage(menuData);
