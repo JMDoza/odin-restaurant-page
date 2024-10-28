@@ -2,6 +2,7 @@ import { createElement, appendChildren } from "./domUtils";
 
 function homepage() {
   const content = document.getElementById("content");
+  
   const title = createElement("h1", "", "Savor Every Moment at La Dolce Vita");
   const reserveButton = createElement("button", "", "Reserve Your Table Today");
   const welcomeParagraph = createElement(

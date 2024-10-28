@@ -30,6 +30,14 @@ nav > button {
   height: 36px;
 }
 
+.active {
+  border: none;
+  font-size: 20px;
+  background-color: #6d282f77;
+  width: 86px;
+  height: 36px;
+}
+
 #content {
   display: grid;
   grid-template-rows: 0fr 0fr 1fr;
