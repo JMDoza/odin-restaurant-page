@@ -1,35 +1,10 @@
 import { createElement } from "./domUtils";
 
-function menuItem(name, desc) {
-  const getName = () => name;
-  const getDesc = () => desc;
-
-  return { getName, getDesc };
-}
-
-function menuPage() {
-  const menuItems = [
-    menuItem(
-      "Antipasti",
-      "Start your meal with classics like Bruschetta al Pomodoro or the creamy Burrata served with ripe tomatoes and basil."
-    ),
-    menuItem(
-      "Pasta",
-      "Our signature pasta dishes include Pappardelle Bolognese, Cacio e Pepe, and Truffle Mushroom Risotto, all made fresh daily."
-    ),
-    menuItem(
-      "Pizze",
-      "Indulge in our Neapolitan-style pizzas, topped with ingredients like buffalo mozzarella, prosciutto, and arugula, straight from our wood-fired oven."
-    ),
-    menuItem(
-      "Dolci",
-      "End your meal on a sweet note with our Tiramisu, Cannoli, or a scoop of house-made Gelato."
-    ),
-  ];
-
+function menuPage(menuData) {
   const content = document.getElementById("content");
-  const h1 = createElement("h1", "", "Indulge in Authentic Italian Cuisine");
-  const p = createElement(
+
+  const title = createElement("h1", "", "Indulge in Authentic Italian Cuisine");
+  const introText = createElement(
     "p",
     "menu-intro",
     `Our menu is a curated selection of Italy's most beloved dishes, each
@@ -40,7 +15,7 @@ function menuPage() {
   );
   const menuContainer = createElement("div", "menu-container");
 
-  menuItems.forEach((item) => {
+  menuData.forEach((item) => {
     const menuItem = createElement("div", "menu-item");
     const img = createElement("div", "", "", item.getName().toLowerCase());
     const name = createElement("h2", "", item.getName());
@@ -52,8 +27,8 @@ function menuPage() {
     menuContainer.appendChild(menuItem);
   });
 
-  content.appendChild(h1);
-  content.appendChild(p);
+  content.appendChild(title);
+  content.appendChild(introText);
   content.appendChild(menuContainer);
 }
 
